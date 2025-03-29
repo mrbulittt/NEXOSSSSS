@@ -213,7 +213,7 @@ namespace NEXOS
                     Console.ForegroundColor = ConsoleColor.DarkYellow;
                     Console.WriteLine("2.Calendar");
                     Console.ForegroundColor = ConsoleColor.Magenta;
-                    Console.WriteLine("3.Games");
+                    Console.WriteLine("3.RandomNumber");
                     Console.ForegroundColor = ConsoleColor.White;
                     break;
                 case "Power":
@@ -738,11 +738,11 @@ namespace NEXOS
 
                 attempts++;
 
-                if (guess < secretNumber)
+                if (guess > secretNumber)
                 {
                     Console.WriteLine("Too little! Try again.");
                 }
-                else if (guess > secretNumber)
+                else if (guess < secretNumber)
                 {
                     Console.WriteLine("Too many! Try again.");
                 }
