@@ -11,6 +11,7 @@ using Cosmos.System.Graphics;
 using System.Drawing;
 using NEXOS.GUI;
 
+
 namespace NEXOS
 {
     public class Kernel : Sys.Kernel
@@ -24,17 +25,20 @@ namespace NEXOS
         private bool isRegistered = false;
         private string registeredUser = "";
         private string registeredPassword = "";
-        private static Canvas _canvas;
+        public static Canvas _canvas;
         private Mouse _mouse;
 
         protected override void BeforeRun()
         {
+            
             Console.Clear();
             // Инициализация файловой системы FAT
             fs = new CosmosVFS();
             VFSManager.RegisterVFS(fs);
             Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine("\r\n  _   _ _______  __\r\n | \\ | | ____\\ \\/ /\r\n |  \\| |  _|  \\  / \r\n | |\\  | |___ /  \\ \r\n |_| \\_|_____/_/\\_\\\r\n                   \r\n");
+
+            
 
             // Проверка, зарегистрирован ли пользователь
             if (!CheckRegistration())
@@ -49,8 +53,11 @@ namespace NEXOS
             Console.WriteLine("MyOS is booting...");
             Console.WriteLine("Filesystem initialized (FAT) at " + currentDirectory);
             Console.WriteLine("Type 'Help' for available commands.");
-            _canvas = FullScreenCanvas.GetFullScreenCanvas(new Mode (1920, 1080, ColorDepth.ColorDepth32));
+
+            //МЫшка
+            _canvas = FullScreenCanvas.GetFullScreenCanvas(new Mode(1920, 1080, ColorDepth.ColorDepth32));
             _mouse = new Mouse(_canvas);
+
         }
 
         // Проверка регистрации
@@ -177,6 +184,9 @@ namespace NEXOS
 
         protected override void Run()
         {
+            _mouse.DrawCursor();
+            _canvas.Clear(Color.Green);
+            _canvas.Display();
             Console.ForegroundColor = ConsoleColor.Magenta;
             Console.Write("NEX>> ");
             Console.ForegroundColor = ConsoleColor.White;
@@ -186,9 +196,7 @@ namespace NEXOS
             Commands(input);
             Filesystem(input);
             Software(input);
-            _mouse.DrawCursor();
-            _canvas.Clear(Color.Blue);
-            _canvas.Display();
+           
         }
         public void Commands(string input)
 

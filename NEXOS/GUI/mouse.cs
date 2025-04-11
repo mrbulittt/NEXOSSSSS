@@ -10,14 +10,15 @@ using Cosmos.HAL;
 using Cosmos.System.Graphics;
 using System.Drawing;
 using IL2CPU.API.Attribs;
+using NEXOS.GUI;
 
 namespace NEXOS.GUI
 {
     class Mouse
     {
-        private readonly Canvas _canvas;
-        private Bitmap _cursor;
-        [ManifestResourceStream(ResourceName = "cursor.bmp")]
+        public readonly Canvas _canvas;
+        public Bitmap _cursor;
+        [ManifestResourceStream(ResourceName = "NEXOS.GUI.Resources.cursor.bmp")]
         static byte[] cursorbyte;
 
         public Mouse(Canvas canvas)
