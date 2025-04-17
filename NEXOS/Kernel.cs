@@ -9,8 +9,7 @@ using Sys = Cosmos.System;
 using Cosmos.HAL;
 using Cosmos.System.Graphics;
 using System.Drawing;
-using NEXOS.GUI;
-
+using NEXOS.DataKit;
 
 namespace NEXOS
 {
@@ -26,7 +25,7 @@ namespace NEXOS
         private string registeredUser = "";
         private string registeredPassword = "";
         public static Canvas _canvas;
-        private Mouse _mouse;
+        
 
         protected override void BeforeRun()
         {
@@ -56,7 +55,7 @@ namespace NEXOS
 
             //МЫшка
             _canvas = FullScreenCanvas.GetFullScreenCanvas(new Mode(1920, 1080, ColorDepth.ColorDepth32));
-            _mouse = new Mouse(_canvas);
+            
 
         }
 
@@ -184,7 +183,7 @@ namespace NEXOS
 
         protected override void Run()
         {
-            _mouse.DrawCursor();
+           
             _canvas.Clear(Color.Green);
             _canvas.Display();
             Console.ForegroundColor = ConsoleColor.Magenta;
