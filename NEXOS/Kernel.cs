@@ -10,7 +10,6 @@ using Cosmos.HAL;
 using Cosmos.System.Graphics;
 using System.Drawing;
 
-
 namespace NEXOS
 {
     public class Kernel : Sys.Kernel
